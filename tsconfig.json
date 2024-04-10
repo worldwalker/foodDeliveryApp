@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "module": "es2020",
+    "target": "es2020",
+    "jsx": "react",
+    "lib": ["ES2020", "DOM"],
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "strict": true,
+    "noImplicitAny": true,
+    "strictPropertyInitialization": false,
+    "resolveJsonModule": true
+  },
+  "exclude": ["node_modules"],
+  "inlude": ["src"]
+}
