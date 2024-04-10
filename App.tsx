@@ -1,35 +1,21 @@
 import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  Button,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import {Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import HomeScreen from './src/screens/Home';
+import MenuScreen from './src/screens/Menu';
+import CheckoutScreen from './src/screens/Checkout';
 
 const Stack = createNativeStackNavigator();
-const ProfileScreen = ({navigation, route}: {navigation: any; route: any}) => {
-  return <Text>This is {route.params.name}'s profile</Text>;
-};
 
 function App() {
   return (
     <NavigationContainer>
-      {/* <Stack.Navigator></Stack.Navigator> */}
-      <Text>Hello World</Text>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Menu" component={MenuScreen} />
+        <Stack.Screen name="Checkout" component={CheckoutScreen} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
