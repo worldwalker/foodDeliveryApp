@@ -22,7 +22,6 @@ const HomeScreen = () => {
   return (
     <SafeAreaView style={{flex: 1}}>
       <ScrollView style={{flex: 1}}>
-        {/* Top Navigation Bar */}
         <View
           style={{
             flexDirection: 'row',
@@ -56,7 +55,6 @@ const HomeScreen = () => {
           ))}
         </ScrollView>
 
-        {/* Category Grid */}
         <View
           style={{
             flexDirection: 'row',

@@ -3,3 +3,5 @@ export type RootStackParamList = {
   Menu: undefined;
   Checkout: undefined;
 };
+
+export type TMenuTypes = 'appetizer' | 'main' | 'desert' | 'drink' | 'all';
