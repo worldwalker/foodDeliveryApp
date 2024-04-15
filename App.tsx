@@ -1,28 +1,32 @@
 import React, {useState} from 'react';
 import {Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeScreen from './src/screens/Home';
-import MenuScreen from './src/screens/Menu';
 import CheckoutScreen from './src/screens/Checkout';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import {TMenuTypes} from './src/types/NavigationTypes';
 import {MenuTypeContext} from './src/context/AppContextProvider';
+import Menu from './src/screens/Menu';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import ChosenProductPage from './src/screens/ChosenProduct';
 
-const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
 function App() {
   const [menuType, setMenuType] = useState<TMenuTypes>('all');
+  const [chosenProductId, setChosenProductId] = useState<number>(0);
+
   return (
-    <MenuTypeContext.Provider value={{menuType, setMenuType}}>
+    <MenuTypeContext.Provider
+      value={{menuType, setMenuType, chosenProductId, setChosenProductId}}>
       <NavigationContainer>
-        <Tab.Navigator>
-          <Tab.Screen name="Home" component={HomeScreen} />
-          <Tab.Screen name="Menu" component={MenuScreen} />
-          <Tab.Screen name="Checkout" component={CheckoutScreen} />
-        </Tab.Navigator>
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Menu" component={Menu} />
+          <Stack.Screen name="Checkout" component={CheckoutScreen} />
+          <Stack.Screen name="ChosenProduct" component={ChosenProductPage} />
+        </Stack.Navigator>
       </NavigationContainer>
     </MenuTypeContext.Provider>
   );

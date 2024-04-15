@@ -12,12 +12,16 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {categories, featuredDishes} from '../../database/data';
-import Divider from '../../components/Divider';
 
 type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
 
 const HomeScreen = () => {
   const navigation = useNavigation<HomeScreenNavigationProp>();
+
+  /** HANDLERS **/
+  const handleNavigation = () => {
+    navigation.navigate('Menu');
+  };
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -63,18 +67,20 @@ const HomeScreen = () => {
           }}>
           {categories.map((category, index) => (
             <View key={index} style={{width: '100%', margin: 10}}>
-              <Image
-                source={{uri: category.image}}
-                style={{width: '100%', height: 200}}
-              />
-              <Text
-                style={{
-                  textAlign: 'center',
-                  fontWeight: 'bold',
-                  marginTop: 10,
-                }}>
-                {category.name}
-              </Text>
+              <TouchableOpacity onPress={() => handleNavigation()}>
+                <Image
+                  source={{uri: category.image}}
+                  style={{width: '100%', height: 200}}
+                />
+                <Text
+                  style={{
+                    textAlign: 'center',
+                    fontWeight: 'bold',
+                    marginTop: 10,
+                  }}>
+                  {category.name.toUpperCase()}
+                </Text>
+              </TouchableOpacity>
             </View>
           ))}
         </View>
